@@ -1,0 +1,67 @@
+##
+# SpringBoot Application Properties
+# run with maven?  mvn spring-boot:run
+# BE SURE TO RENAME ME TO application.properties
+##
+#app config
+spring.application.name = spring-boot-rest-highclaims-server
+spring.profiles = default
+
+## Should I run in debug mode?
+debug = false
+
+## Include Spring Dev Tools when debugging
+spring.devtools.add-properties = true
+
+## Logging Levels
+logging.level.root = INFO
+logging.level.org.mongodb.sbws=INFO
+logging.level.org.mongodb.driver.cluster=INFO
+
+## Log File
+#logging.file=/highClaimRestService.log
+
+############################
+# MONGODB (MongoProperties)
+############################
+## The next 4 props removes the auto-configure of MongoDB if you desire to use the native driver, etc.
+spring.autoconfigure.exclude[0] = org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+spring.autoconfigure.exclude[1] = org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration
+spring.autoconfigure.exclude[2] = org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration
+spring.autoconfigure.exclude[3] = org.springframework.boot.autoconfigure.data.mongo.MongoRepositoriesAutoConfiguration
+
+spring.data.mongodb.uri = mongouri - does not work with srv style url
+spring.data.mongodb.database = mydb
+
+#basic auth credentials
+spring.security.user.name = myuser
+spring.security.user.password = mypass
+spring.security.user.roles = myrole
+
+#configs to connect to a secured server
+spring.boot.admin.client.url = http://localhost:8080
+#spring.boot.admin.client.instance.service-base-url=http://localhost:8081
+spring.boot.admin.client.username = admin user
+spring.boot.admin.client.password = admin pass
+
+#configs to give secured server info
+spring.boot.admin.client.instance.metadata.user.name = ${spring.security.user.name}
+spring.boot.admin.client.instance.metadata.user.password = ${spring.security.user.password}
+
+
+############################
+# Management Config
+############################
+management.endpoint.env.enabled = true
+management.endpoint.info.enabled = true
+management.endpoint.health.enabled = true
+management.endpoint.logfile.enabled = true
+management.endpoint.metrics.enabled = true
+management.endpoints.enabled-by-default = true
+management.endpoint.health.show-components = always
+management.endpoints.jmx.exposure.include = *
+
+server.port = server port
+
+management.endpoints.web.exposure.include = *
+management.endpoint.health.show-details = always
