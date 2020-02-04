@@ -20,9 +20,13 @@ public class HighClaimAmountService {
     public String process(HighClaimSourceModel model){
         log.info("Process high claim amount.");
 
-        // add additional fields for route and routeProcessDate
+        // add additional field for route
         model.setRoute("kafka-http");
-        model.setRouteProcessDate(new java.util.Date());
+
+        // add fields for inserted and modified ts
+        // these fields can be added via MongoDB Sink Connector as well
+        model.set_insertedTS(new java.util.Date());
+        model.set_modifiedTS(new java.util.Date());
 
         MongoOperations mongoOps = myMongoOperations.getMongoOperations();
 

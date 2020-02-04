@@ -15,6 +15,11 @@ public final class HighClaimSourceModel {
     private String route;
     private java.util.Date routeProcessDate;
 
+    // insert and modified time fields added
+    private java.util.Date _modifiedTS;
+    private java.util.Date _insertedTS;
+
+
     public HighClaimSourceModel() {
 
     }
@@ -75,6 +80,22 @@ public final class HighClaimSourceModel {
         this.routeProcessDate = routeProcessDate;
     }
 
+    public Date get_modifiedTS() {
+        return _modifiedTS;
+    }
+
+    public void set_modifiedTS(Date _modifiedTS) {
+        this._modifiedTS = _modifiedTS;
+    }
+
+    public Date get_insertedTS() {
+        return _insertedTS;
+    }
+
+    public void set_insertedTS(Date _insertedTS) {
+        this._insertedTS = _insertedTS;
+    }
+
     @Override
     public String toString() {
         return "HighClaimSourceModel{" +
@@ -85,6 +106,8 @@ public final class HighClaimSourceModel {
                 ", documentKey=" + documentKey +
                 ", route='" + route + '\'' +
                 ", routeProcessDate=" + routeProcessDate +
+                ", _modifiedTS=" + _modifiedTS +
+                ", _insertedTS=" + _insertedTS +
                 '}';
     }
 }
